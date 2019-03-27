@@ -35,40 +35,40 @@ const getIndex = (row, col) => {
 };
 
 const drawCells = () => {
-    const cellsPtr = u.cells();
-    const cells = new Uint8Array(memory.buffer, cellsPtr, grid_width * grid_height);
+   const cellsPtr = u.cells();
+   const cells = new Uint8Array(memory.buffer, cellsPtr, grid_width * grid_height);
 
-    ctx.beginPath();
+   ctx.beginPath();
 
-    for (let row = 0; row < grid_height; row++) {
-        for (let col = 0; col < grid_width; col++) {
-           const idx = getIndex(row, col);
+   for (let row = 0; row < grid_height; row++) {
+       for (let col = 0; col < grid_width; col++) {
+          const idx = getIndex(row, col);
 
-           ctx.fillStyle = cells[idx] === Cell.Dead
-              ? DEAD_COLOR
-              : ALIVE_COLOR;
+          ctx.fillStyle = cells[idx] === Cell.Dead
+             ? DEAD_COLOR
+             : ALIVE_COLOR;
 
-           ctx.fillRect(
-              utils.grid2pix(col),
-              utils.grid2pix(row),
-              utils.CELL_SIZE,
-              utils.CELL_SIZE
-           );
-        }
-    }
+          ctx.fillRect(
+             utils.grid2pix(col),
+             utils.grid2pix(row),
+             utils.CELL_SIZE,
+             utils.CELL_SIZE
+          );
+       }
+   }
 
-  ctx.stroke();
+   ctx.stroke();
 };
 
-// TODO: Handle out of bounds index case
 // Click on canvas to flip a cell
 canvas.addEventListener('mousemove', e => {
-    //console.log(utils.pix2grid(e.pageX) + ',' + utils.pix2grid(e.pageY));
-    u.flip_cell(
-        utils.pix2grid(e.pageY),
-        utils.pix2grid(e.pageX)
-    );
-    drawCells();
+   const x = utils.pix2grid(e.pageX),
+         y = utils.pix2grid(e.pageY);
+   
+   if ( x < grid_width && y < grid_height )
+      u.set_cell(y,x);
+
+   drawCells();
 }, false);
 
 drawCells();

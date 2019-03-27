@@ -12,6 +12,6 @@ export class Universe {
   cells(): number;
   tick(): void;
   static new(rows: number, cols: number): Universe;
-  flip_cell(row: number, col: number): void;
+  set_cell(row: number, col: number): void;
   render(): string;
 }

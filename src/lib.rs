@@ -110,12 +110,15 @@ impl Universe {
         }
     }
 
-    pub fn flip_cell(&mut self, row: u32, col: u32) {
+    pub fn set_cell(&mut self, row: u32, col: u32) {
         let i = self.get_index(row,col);
+        self.cells[i] = Cell::Alive;
+        /*
         self.cells[i] = match self.cells[i] {
             Cell::Alive => Cell::Alive, // TODO: should be dead but I'm testing
             Cell::Dead => Cell::Alive
         }
+        */
     }
 
     pub fn render(&self) -> String {

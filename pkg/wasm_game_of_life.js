@@ -88,8 +88,8 @@ export class Universe {
     * @param {number} col
     * @returns {void}
     */
-    flip_cell(row, col) {
-        return wasm.universe_flip_cell(this.ptr, row, col);
+    set_cell(row, col) {
+        return wasm.universe_set_cell(this.ptr, row, col);
     }
     /**
     * @returns {string}
