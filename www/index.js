@@ -1,7 +1,7 @@
-import { Universe, Cell } from "wasm-game-of-life";
+import { Universe, Cell } from "wasm-life";
 import * as utils from "./utils.js";
 // WASM memory
-import { memory } from "wasm-game-of-life/wasm_game_of_life_bg";
+import { memory } from "wasm-life/wasm_life_bg";
 
 const GRID_COLOR = "#FFFFFF";
 const DEAD_COLOR = "#FFFFFF";
@@ -21,7 +21,7 @@ const ctx = canvas.getContext('2d');
 
 var starttime = 0;
 const renderLoop = (ts) => {
-    if (ts - starttime > 1000) {
+    if (ts - starttime > 50) {
        u.tick();
        drawCells();
        starttime = ts;

@@ -1,15 +1,15 @@
 {
-  "name": "wasm-game-of-life",
+  "name": "wasm-life",
   "collaborators": [
     "Jay Butera <buterajay@gmail.com>"
   ],
   "version": "0.1.0",
   "files": [
-    "wasm_game_of_life_bg.wasm",
-    "wasm_game_of_life.js",
-    "wasm_game_of_life.d.ts"
+    "wasm_life_bg.wasm",
+    "wasm_life.js",
+    "wasm_life.d.ts"
   ],
-  "module": "wasm_game_of_life.js",
-  "types": "wasm_game_of_life.d.ts",
+  "module": "wasm_life.js",
+  "types": "wasm_life.d.ts",
   "sideEffects": "false"
 }
